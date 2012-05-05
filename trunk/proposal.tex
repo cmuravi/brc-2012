@@ -6,7 +6,7 @@
 \usepackage{amssymb}
 \usepackage{color}
 \usepackage{multirow}
-\usepackage{arydshln}
+%\usepackage{arydshln}
 
 \usepackage{times}
 
@@ -22,6 +22,19 @@
 \topmargin = -0.76in
 \textheight= 9.4in
 \setlength{\textfloatsep}{0pt}
+
+\newtheorem{ResearchProblem}{Problem}
+\newcommand{\Research}[1]{
+        \begin{center}
+        \fbox{                                                                  
+        \begin{minipage}{5.25in}                                                
+        \begin{ResearchProblem}                                                 
+        #1                                                                      
+        \end{ResearchProblem}                                                   
+        \end{minipage}                                                          
+        }
+        \end{center}
+}
 
 \newcommand{\BfPara}[1]{{\noindent {\bf #1.}}}
 \newcommand{\junk}[1]{}
@@ -228,17 +241,19 @@ area.  Within network design, we will study the general problem of
 {\em survivable network design}, with a focus on the important special
 case of {\em aggregation trees}.
 
-\smallskip
-\BfPara{Survivable network design} In the {\em survivable network design problem}, we are given a graph $G = (V,E)$ with edge-costs, and edge-connectivity requirements $r_{ij} \in Z_{\ge 0}$ for every pair of vertices $i, j \in V$, and need to find an
-(approximately) minimum-cost network that provides the required
-connectivity.  This is one of the most fundamental problems in network
-design that generalizes several graph-theoretic optimization problems including shortest paths, spanning and Steiner trees.
-The edge-connectivity requirements capture the need for increased
-reliability in mission-critical systems; furthermore, the general
-statement of the problem allows one to develop algorithmic paradigms
-that may have broad applicability.  
+\BfPara{Survivable network design} In the {\em survivable network
+  design problem}, we are given a graph $G = (V,E)$ with edge-costs,
+and edge-connectivity requirements $r_{ij} \in Z_{\ge 0}$ for every
+pair of vertices $i, j \in V$, and need to find an (approximately)
+minimum-cost network that provides the required connectivity.  This is
+one of the most fundamental problems in network design that
+generalizes several graph-theoretic optimization problems including
+shortest paths, spanning and Steiner trees.  The edge-connectivity
+requirements capture the need for increased reliability in
+mission-critical systems; furthermore, the general statement of the
+problem allows one to develop algorithmic paradigms that may have
+broad applicability.
 
-\smallskip
 \BfPara{Aggregation trees} A
 special case of survivable network design is the fundamental problem
 of constructing a tree that aggregates information from important
@@ -342,35 +357,34 @@ the specific technical approaches for the problems listed in
 Section~\ref{sec:goals}.
 
 \subsection{Network Design}
-\BfPara{Survivable Network Design}  While the survivable network
-design problem is known to admit good approximation algorithms in the
-offline case, work in the online setting has mainly focused only on
-one-connected problems such as Steiner and generalized Steiner
-trees~\cite{qw11}. Indeed, no online algorithms were known for higher
-connected versions of the problem until our recent
-work~\cite{gkr10}. Our algorithms rely on certain tree embeddings and
-are inherently centralized.  We propose to study decentralized
-algorithms for survivable network design in an online setting where
-the underlying graph and costs are static while the connectivity
-requirements change online.
+\subsubsection{Survivable Network Design}  
+While the survivable network design problem is known to admit good
+approximation algorithms in the offline case, work in the online
+setting has mainly focused only on one-connected problems such as
+Steiner and generalized Steiner trees~\cite{qw11}. Indeed, no online
+algorithms were known for higher connected versions of the problem
+until our recent work~\cite{gkr10}. Our algorithms rely on certain
+tree embeddings and are inherently centralized.  We propose to study
+decentralized algorithms for survivable network design in an online
+setting where the underlying graph and costs are static while the
+connectivity requirements change online.
 
-\smallskip
-\BfPara{Aggregation trees} Consider the problem of building an
-aggregation tree for tracking targets.  In a stochastic model of
-uncertainty, we may view each target as an object that is detected by
-one of the various agents according to a previously determined
-probability distribution.  In order to build a backbone network of the
-graph for coordination and control, we need to determine a subtree of
-the graph containing the root such that given the probability
-distribution of target materialization, the subtree maximizes the
-expected number of targets that can be covered by the agent nodes in
-the tree. If this backbone tree is a spanning tree, then all targets
-(each of which materializes at any one of the nodes) will be
-covered. At the other end, if no backbone or tree edges can be built a
-priori, the root can only detect targets that materialize in its
-vicinity. We thus have a trade-off between the allowed size of the
-Steiner tree and its expected target coverage that we propose to study
-in detail.
+\subsubsection{Aggregation trees} 
+Consider the problem of building an aggregation tree for tracking
+targets.  In a stochastic model of uncertainty, we may view each
+target as an object that is detected by one of the various agents
+according to a previously determined probability distribution.  In
+order to build a backbone network of the graph for coordination and
+control, we need to determine a subtree of the graph containing the
+root such that given the probability distribution of target
+materialization, the subtree maximizes the expected number of targets
+that can be covered by the agent nodes in the tree. If this backbone
+tree is a spanning tree, then all targets (each of which materializes
+at any one of the nodes) will be covered. At the other end, if no
+backbone or tree edges can be built a priori, the root can only detect
+targets that materialize in its vicinity. We thus have a trade-off
+between the allowed size of the Steiner tree and its expected target
+coverage that we propose to study in detail.
 
 We call this problem the \noindent{\bf \em Target Maximizing Rooted
   Steiner Tree} problem.  We are given an undirected graph $G =
@@ -401,85 +415,27 @@ worst of many possible scenarios of target materialization. We
 investigate one particularly strong notion of robustness for this
 problem next.
 
-\smallskip
-\noindent {\bf \em Universal approximations for Steiner trees.} We
-also plan to study aggregation trees under an adversarial model of
+\subsubsection{Universal approximations for Steiner trees} 
+\newcommand{\ust}{\mbox{\sc UST}} 
+\newcommand{\utsp}{\mbox{\sc UTSP}}
+\newcommand{\Optr}[1]{\mbox{OptTr}_{#1}}
+\newcommand{\OptSt}[1]{\mbox{OptSt}_{#1}} 
+\newcommand{\cost}[1]{\mbox{cost}(#1)}
+\newcommand{\TR}{C}
+
+We also plan to study aggregation trees under an adversarial model of
 uncertainty.  We recently introduced the framework of {\em universal
   approximations}\/ that provides a robust notion of quality with
-respect to {\em any} online sequence of arrivals~\cite{jia+lnrs:universal}.
-Universality is a framework for dealing with uncertainty by
-guaranteeing a certain quality of goodness for all possible
-completions of the partial information set.  \iffalse Universal
-variants of optimization problems were defined that were both natural
-and well-motivated.\fi We have considered universal versions of three
-classical problems: TSP, Steiner Tree and Set Cover.  Subsequent
-studies have considered universal variants of other problems
-\cite{jia+nrs:gist}. The notion of universality is captured by the
-complexity class $\Sigma_2^P$.  Previous work has shown that for any
-metric space, there exist Steiner trees that have a universal
-approximation ratio of $O(\log^2 n)$~\cite{gupta+hr:oblivious}.  Though these
-results reveal new onsights to the structural properties of Steiner
-trees and metrics, a major drawback is that they do not apply to
-arbitrary graphs.  In recent work, we have made some progress on this
-front~\cite{busch+drrs:ust}.  Major problems still remain, including the task of
-developing a decentralized method for constructing sparse network
-partitions that are required in universal Steiner trees.
-
-In this project, we will explore new paradigms for effective network
-design in scenarios where the input may not be known completely in
-advance.  Such uncertainty may arise due to limited knowledge about
-the future or limited access to global information that may be
-distributed among multiple network nodes.  Towards this end, we seek
-{\em oblivious algorithms}\/ in which individual network nodes have to
-make their decisions with only limited information about the input.
-Recent research has highlighted the promise of oblivious algorithms
-for some specific network optimization problems.  These include the
-seminal result of Racke on oblivious
-routing~\cite{azar-cohen,racke-focs}, the work of Goel-Estrin on data
-aggregation with unknown aggregation
-functions~\cite{goel+e:aggregate}, our recent work introducing the
-universal approximations framework~\cite{jia+lnrs:universal}, and the
-oblivious network design framework of Gupta et
-al.~\cite{gupta+hr:oblivious}.
-
-A major goal of this project is to develop a theory for quantifying
-the price of obliviousness in network design.  Towards this end, we
-will study formal models for oblivious algorithms, including our
-universal approximations framework~\cite{jia+lnrs:universal} and the
-oblivious network design framework of~\cite{gupta+hr:oblivious}; we
-discuss these models in Section~\ref{sec:universal.models}.  In
-Section~\ref{sec:universal.theory}, we discuss the theoretical
-foundations of the universal approximations framework.  These include
-universal versions of the Steiner tree and covering problems, a new
-class of graph decompositions that may have many other applications, a
-complexity-theoretic study of universal approximations, and comparison
-with other models for optimization with limited information.  Finally,
-in Section~\ref{sec:universal.application}, we discuss the application of
-oblivious network design to data dissemination in distributed
-networks.
-
-\BfPara{Oblivious network design}
-In recent work, Gupta et al.\ introduced the following class of
-problems in network design~\cite{gupta+hr:oblivious}.  We are given a
-network $G = (V,E)$ in which source-sink pairs $\{(s_i,t_i)\}$ arrive,
-each pair sending a unit of flow between themselves.  The total cost
-of a flow is given by $\sum_{e \in E} \ell(f_e)$, where $f_e$ is the
-flow on edge $e$ and $\ell$ is some concave cost function.  The goal
-is to select routes for the terminal pairs so as to minimize either
-the total cost or the maximum cost incurred.  In a surprising set of
-results, Gupta et al.\ show that for both of these objectives,
-polylogarithmic approximation ratios are achievable by {\em oblivious                                                    
-algorithms}, in which each terminal pair selects a route without any
-knowledge of the current flow in the network or of the identity of the
-other source-sink pairs, or even of the particular cost function
-$\ell(\cdot)$ as long as it is within a certain class.
-
+respect to {\em any} online sequence of
+arrivals~\cite{jia+lnrs:universal}.  Universality is a framework for
+dealing with uncertainty by guaranteeing a certain quality of goodness
+for all possible completions of the partial information set.
 Formally, an instance of the Universal Steiner Tree (\ust) problem is
 a pair $\langle G , r\rangle$ where $G = (V,E)$ is a weighted
 undirected graph, and $r$ is a distinguished vertex in $V$ that we
 refer to as the {\em root}.  For any spanning tree $T$ of $G$, define
-the {\em stretch}\/ of $T$ as $\max_{S \subseteq V}                                                                      
-\cost{T_{S\cup r}}/\cost{\OptSt{S\cup r}}$, where $\OptSt{X}$ is an optimal
+the {\em stretch}\/ of $T$ as $\max_{S \subseteq V}\cost{T_{S\cup
+    r}}/\cost{\OptSt{S\cup r}}$, where $\OptSt{X}$ is an optimal
 Steiner tree connecting the vertices in $X \cup r$.  The goal of the
 \ust\ problem is to determine a spanning tree with minimum stretch.
 
@@ -490,10 +446,9 @@ metric space $(V,d)$.  For any cycle (tour) $\TR$ containing all the
 vertices in $V$ and a subset $S$ of $V$, let $\TR_S$ denote the unique
 cycle over $S$ in which the ordering of vertices in $S$ is consistent
 with their ordering in $C$.  The stretch of $\TR$ is defined as
-$\max_{S\subseteq V}                                                                                                     
-\cost{\TR_{S}}/\cost{\Optr{S}}$, where $\Optr{S}$ denotes the minimum
-cost tour on set $S$. The \utsp\ is to find a tour on $V$ with minimum
-stretch.
+$\max_{S\subseteq V} \cost{\TR_{S}}/\cost{\Optr{S}}$, where $\Optr{S}$
+denotes the minimum cost tour on set $S$. The \utsp\ is to find a tour
+on $V$ with minimum stretch.
 
 \Research{
 \label{prob:ust}
@@ -501,89 +456,49 @@ What are the best stretch achievable for \ust, \utsp, and universal
 variants of the group Steiner tree, group TSP, and generalized Steiner
 network problems?}
 
-\junk{It is easy to show that a minimum spanning tree may have stretch
-$\Omega(n)$ for an $n$-node graph.  Furthermore, even though the
-NP-complete minimum Steiner tree problem~\cite{garey+j:np} admits
-simple efficient constant-factor approximation
-algorithms~\cite[Chapter 3]{vazirani:approximateBook},
-~\cite{robins+z:steiner}, one cannot easily extend these
-approximations to a universal Steiner tree because any solution needs
-to apply to an exponential number of terminal subsets.}
+The notion of universality is captured by the complexity class
+$\Sigma_2^P$.  Previous work has shown that for any metric space,
+there exist Steiner trees that have universal poylogarithmic
+approximation ratios: our prior results~\cite{jia+lnst:universal}, and
+the improved results of $O(\log^2 n)$~\cite{gupta+hr:oblivious} that
+introduce the notion of oblivious network design.  Though these
+results reveal new onsights to the structural properties of Steiner
+trees and metrics, a major drawback is that {\em they do not apply to
+  arbitrary graphs}.  
 
-In our ongoing investigation of Problem~\ref{prob:ust}, we have
-considered a metric version of the \ust\ problem; that is, the graph
-$G$ is the complete graph induced by a metric
-space~\cite{jia+lnrs:universal}.  We have developed a polynomial time
-algorithm that achieves $O(\log^4n/\log\log n)$ stretch for any $n$
-vertex metric space.  Thus, our algorithm finds, for any metric space
-over $n$ vertices and a root vertex, a spanning tree $T$ in
-polynomial-time such that {\em for every subset $S$ of vertices}\/
-containing the root, the sub-tree of $T$ induced by $S$ is {\em within
-$O(\log^4n/\log\log n)$ of an optimal Steiner tree for $S$}.
+In very recent work, we have made some progress on this
+front~\cite{busch+drrs:ust}, and have identified a promising approach
+to attack the problem.  One of the major challenges in constructing a
+universal Steiner tree is that any tree will be forced to place some
+vertices far apart in tree, even though they may be ``nearby''
+according to the underlying graph distances.  As a result, the
+resulting spanning tree may perform poorly on a subset that includes
+this set and some other carefully chosen vertices.  To address this
+challenge, we introduce the notion of a {\em hierarchy of graph
+  partitions}, each of which guarantees small strong cluster diameter
+and bounded local neighbourhood intersections.  We have shown that the
+such a suitable hierarchy of graph partitions is essentially both
+sufficient and necessary for constructing low-stretch universal
+Steiner trees.  For metric spaces -- i.e., weighted complete graphs
+satisfying triangle inequality -- such a hierarchy can be constructed
+using the seminal work of Awerbuch and Peleg on sparse
+partitions~\cite{awerbuch+p:partition,peleg:distributeBook}.  
 
-One of the major challenges in constructing a universal Steiner tree
-is that any tree will be forced to place some vertices far apart in
-tree, even though they may be ``nearby'' according to the underlying
-metric distances.  As a result, the resulting spanning tree may
-perform poorly on a subset that includes this set and some other
-carefully chosen vertices.  To address this challenge, we have
-developed a new partitioning scheme, building on the seminal work of
-Awerbuch and Peleg on sparse
-partitions~\cite{awerbuch+p:partition,peleg:distributeBook}, in which
-every neighborhood around any vertex intersects a small number of
-partition sets.  More formally, we show that for any integer $\rho$,
-any $n$-vertex metric space can be partitioned such that (i) the
-diameter of every set in the partition is $O(\rho\log n)$; and (ii)
-the ball of radius $\rho$ around any vertex intersects $O(\log n)$
-sets in the partition.  By varying the parameter $\rho$, our
-partitioning scheme leads to a natural hierarchical decomposition of
-the metric space, which forms the key ingredient of our universal
-Steiner tree.
-
-For the special case of doubling metrics, our algorithm achieves an
-$O(\log n)$ upper bound.  We have also shown a lower bound of
-$\Omega(\log n/\log\log n)$ for \ust\ that holds even when all the
-vertices are on the plane.  While this settles the best stretch
-achievable for Euclidean \ust\ up to a small $O(\log                                                                     
-\log n)$ term, there is still a considerable gap between the upper and
-lower bounds for the metric case.  Our polylogarithmic upper bounds
-also extend to the universal TSP problem and the universal Steiner
-forest problems.  In~\cite{gupta+hr:oblivious}, $O(\log^2n)$-stretch
-algorithms are given for \utsp\ and a variant of the \ust\ problem in
-the oblivious network design framework.
-
-Unfortunately, our result for the metric case does not yield any
-useful bounds for the \ust\ problem on general graphs.  Our first line
-of attack for this problem is to extend our sparse partitioning
-scheme, which we have developed for a metric space, to arbitrary
-undirected graphs.  More specifically, we ask the following question:
-
-\Research{
-\label{prob:partition}
-For any undirected weighted graph $G$ and real number $\rho$, is there
-a partition of the vertices of $G$ such that (i) for every set $S$ of
-the partition, the subgraph of $G$ induced by $S$ has strong diameter
-$O(\rho\log n)$ and (ii) the ball of radius $\rho$ around any node
-intersects $O(\log n)$ sets.
-}
-
-While an affirmative answer to the above partitioning problem appears
-to be neither necessary nor sufficient for solving \ust, we believe
-this problem is of great importance with applications in distributed
-computing and network design that go beyond the scope of this project.
-The seminal results of Awerbuch-Peleg~\cite{awerbuch+p:partition},
-Linial-Saks~\cite{linial+s:decomposeJ}, and others (e.g., see the
-text~\cite{peleg:distributeBook}) all build graph partitions that have low {\em                                      weak diameter}, as opposed to strong diameter.  In our preliminary
-investigation, we have established the claim in the affirmative for
-the special case of trees (easy, though not trivial) and outerplanar
-graphs (for $\rho = 1$).  The techniques in the recent results
-of~\cite{amir+kr:vertex-cut,elkin+est:tree,emek+p:tree} that deal with
-some of the strong diameter issues in a different context may be
-helpful in this regard.
-
+It is a major open problem, however, to build such hierarchies for
+arbitrary graphs.  We have made preliminary progress by presenting
+partition hierarchies for general graphs that yield a $2^{O(\sqrt{\log
+    n})}$-stretch \ust\ for general graphs, and partition hierarchies
+for minor-free graphs that yield a polylogarithmic-stretch \ust\ for
+minor-free graphs.  Furthermore, all of the solutions proposed thus
+far are centralized.  We propose to develop distributed algorithms for
+constructing sparse partition hierarchies.  In an earlier work on
+aggregation trees for sensor network applications, we showed that this
+is achievable for the highly specialized case of grid
+graphs~\cite{jia+nrs:gist}.
 
 \subsection{Information Flow}
-\BfPara{Congestion-minimizing degree-bounded flows in dynamic
+
+\subsubsection{Congestion-minimizing degree-bounded flows in dynamic
   networks} In earlier work \cite{awerbuch+l:flow}, distributed
 algorithms for finding congestion minimizing flows in certain dynamic
 networks were presented.  However the routes undertaken by these flows
@@ -598,7 +513,6 @@ techniques will enable us to maintain near-optimal degree-bounded
 flows in dynamic networks.  We also plan to consider generalizations
 of the problem incorporating link errors and coding techniques.
 
-\iffalse
 This problem can be generalized in a multiplicity of ways. Rather than
 one commodity one can consider multiple commodities, each with their
 own target or destination nodes. Second, one can consider the
@@ -607,10 +521,8 @@ connections. Third, one can assume different forms of error that
 affect link capacities and the use of techniques such as network
 coding. Finally, one can also consider integrating the route discovery
 problem with the problem of optimizing the flows.
-\fi
 
-\smallskip
-\BfPara{Information dissemination in highly dynamic networks} 
+\subsubsection{Information dissemination in highly dynamic networks} 
 We will conduct a comprehensive study of fully-distributed gossip
 algorithms for the $k$-broadcast problem in dynamic networks.  In
 recent work~\cite{dutta+prs:dynamic}, we studied the class of {\em
