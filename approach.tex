@@ -1,0 +1,25 @@
+\section{Technical Approaches and Recent Related Work}
+The optimization problems raised in this proposal pose two major
+challenges.  First, how do we deal with uncertainty, whether it is in
+the node pairs being connected in the survivable network design
+problem, the location of targets in the aggregation tree problem, or
+the dynamic network topology in the information flow problems?
+Second, how do we ensure that our algorithms can be implemented with
+little coordination among the network nodes?
+
+We plan to attack the issue of uncertainty by developing algorithms
+for a spectrum of models spanning from {\em stochastic}, where the
+unknown online inputs are assumed to be drawn from some known
+probability distribution, to {\em adversarial}, where the inputs or
+network dynamics are completely under adversarial control.  For the
+design of fully-distributed algorithms, we propose to study new {\em
+  distributed methods}\/ for constructing network decompositions that
+are at the heart of many effective network design algorithms.  We will
+also focus on gossip-style algorithms for information flow, which are
+inherently decentralized, and have the promise of achieving
+near-optimality in highly dynamic environments.  We now elaborate on
+the specific technical approaches for the problems listed in
+Section~\ref{sec:goals}.
+
+\input{network_design}
+\input{information_flow}
