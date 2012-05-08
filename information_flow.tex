@@ -1,4 +1,21 @@
 \subsection{Information Flow}
+Our proposed work on decentralized network design will ensure that the
+underlying communication network connecting the agent nodes satisfies
+mission-critical connectivity properties.  The network structures thus
+designed are very likely to change with time due to the mobility of
+the nodes, failures in the communication links, as well as adversarial
+attacks on the network.  
+
+The second major component of this proposal to develop distributed
+algorithms for efficient and effective flow of information over such
+dynamic networks.  Our proposed work on network design allows us to
+make assumptions about minimal connectivity of the underlying network;
+however, to guarantee high-throughput information flow for a dynamic
+distributed environment, we need to control congestion, and focus on
+local lightweight algorithms that maintain limited state.  In this
+project, we will study two important information flow problems:
+congestion-minimizing degree-bounded flows, and information
+dissemination under adversarial dynamics.
 
 \subsubsection{Congestion-minimizing degree-bounded flows in dynamic
   networks} In earlier work \cite{awerbuch+l:flow}, distributed
@@ -24,7 +41,7 @@ affect link capacities and the use of techniques such as network
 coding. Finally, one can also consider integrating the route discovery
 problem with the problem of optimizing the flows.
 
-\subsubsection{Information dissemination in highly dynamic networks} 
+\subsubsection{Information dissemination in adversarial networks} 
 We will conduct a comprehensive study of fully-distributed gossip
 algorithms for the $k$-broadcast problem in dynamic networks.  Recall
 that in the $k$-broadcast problem, $k$ of the $n$ nodes each have a
