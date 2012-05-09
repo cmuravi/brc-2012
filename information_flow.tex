@@ -40,19 +40,29 @@ coding. Finally, one can also consider integrating the route discovery
 problem with the problem of optimizing the flows.
 
 \subsubsection{Information dissemination in adversarial networks} 
-We will conduct a comprehensive study of fully-distributed gossip
-algorithms for the $k$-broadcast problem in dynamic networks.  Recall
-that in the $k$-broadcast problem, $k$ of the $n$ nodes each have a
-message that need to be disseminated to every node in the network.
-Suppose that the nodes are synchronized and in each step, each node
-can broadcast the equivalent of a bounded number of tokens to its
-neighbors~\cite{kuhn+lo:dynamic}.  What is the minimum number of steps
-needed to complete the dissemination?  If the network is completely
-static and connected, then a local token-forwarding process on a
-spanning tree of the network can accomplish the task in $O(n + k)$
-steps, independent of the structure of the network.  In a dynamic
-network as in the above model however, the problem is much more
-challenging.
+We will conduct a comprehensive study of fully distributed algorithms
+for information dissemination in dynamic networks controlled by
+adversaries.  In such highly dynamic scenarios, the algorithms need to
+be lightweight and maintain very limited state since it is impossible
+to coordinate or reach significant
+consensus~\cite{ruppert+l:impossibility}.  We will begin by studying
+the basic $k$-broadcast problem.  Recall that in the $k$-broadcast
+problem, $k$ of the $n$ nodes each have a message that need to be
+disseminated to every node in the network.  Suppose that the nodes are
+synchronized and in each step, each node can broadcast the equivalent
+of a bounded number of tokens to its neighbors~\cite{kuhn+lo:dynamic}.
+What is the minimum number of steps needed to complete the
+dissemination?  If the network is completely static and connected,
+then a local token-forwarding process on a spanning tree of the
+network can accomplish the task in $O(n + k)$ steps, independent of
+the structure of the network.  In a dynamic network as in the above
+model however, the problem is much more challenging.
+
+\Research{
+\label{prob:broadcast}
+Is there a distributed algorithm that completes any $k$-broadcast
+instance in $O(n + k)$ steps on any adversarially dynamic $n$-node
+network? }
 
 In recent work~\cite{dutta+prs:dynamic}, we studied the class of {\em
   forwarding}\/ algorithms that do not manipulate tokens in any way
@@ -105,3 +115,7 @@ connections with the long-standing open problems of approximating
 directed Steiner trees~\cite{charikar+ccdgg:steiner} and bounding the
 network coding advantage in multicast over directed networks.
 
+\Research{
+\label{prob:dynamic_general}
+Design and analyze fully distributed gossip-based algorithms for
+consensus and aggregation, and computing separable functions? }
