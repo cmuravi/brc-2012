@@ -21,8 +21,10 @@ In this proposal, we develop robust models for studying the
 fundamental tasks of establishing and maintaining connectivity and
 control in complex networked systems, which capture (i) limited
 communication between agents (necessitating distributed algorithms),
-(ii) online revelation of information over time (including stochastic,
-robust and competitive frameworks) and (iii) permit the development of
+(ii) online revelation of information over time (including robust 
+and competitive frameworks), (iii) input selection ranging from the 
+worst-case adversarial choice to stochastic choice and (iv) 
+permit the development of
 rigorous approximation algorithms with a polynomial running time that
 provide provably good solutions with performance guarantees. These
 three aspects of our model directly address the three main
@@ -44,9 +46,32 @@ underlying network may, in fact, be under adversarial control; (c) the
 algorithms running these networked systems need to be
 fully-distributed.
 \fi
+Our framework encompasses 3 dimensions - locality, uncertainty, and temporality, 
+with 2 complementary aspects to each dimension, see Figure \ref{fig:dimensions}. 
+This gives rise to $2^3 = 8$ different categories of problems. 
+The hardest problems are those that require distributed solutions when 
+faced with an adversary that adaptively reveals the input over time. Different
+problems have different characteristics when investigated in the context of
+different categories. And sometimes it is the case that we can find solution
+concepts that can handle multiple dimensions simultaneously as with the
+(meta-)phenomenon of {\em universality} \cite{} that, for certain problems of central
+significance such as TSP, Steiner Tree and Set Cover, produces guaranteed solutions 
+(albeit,centralized)
+in the face of adversarial revelation of the input (in fact universal algorithms
+do not even exploit the adaptivity available to them and operate obliviously).  
+One of the hopes of this proposal is to extend the phenomenon of universality to
+the distributed setting in addition to uncovering other similar (meta-)phenomena.
 At a high level, the problems we plan to study in this project can be
 divided into two categories: {\bf \em network design}\/ and {\bf \em
 information flow}.
+
+\begin{figure}
+\centering
+\psfig{file=dimensions.ps, width=1in, height=1in}
+\vspace{-0.5in}
+\caption{Our framework for Distributed Online Optimization}
+\label{fig:dimensions}
+\end{figure}
 
 \BfPara{Network Design} Network design concerns the construction of
 overlay network structures that form the foundation for aggregation,
@@ -152,12 +177,12 @@ across the joint battlespace. Originally conceived in 1997 it has expanded into 
 family of programs for the development and delivery of tactical communications and networking 
 solutions for the Air Force, Army, Navy and Marines. Though portions of the JTRS program have
 been scrapped or undergone transformation, nevertheless the research issues raised by some of 
-its subinitiative continue to be of significance today.
+its subinitiatives continue to be of significance today.
 The Airborne, Maritime, Fixed Station (AMF) subinitiative of the JTRS project is of particular 
 relevance.  It is concerned with the design, development, integration, testing and delivery of
 advanced communication systems to modernize current radio systems with next-generation 
-Software Defined Radio technology. Reliable network-centric capability and legacy 
-compatibility is to provide joint interoperability and secure information flow for 
+Software Defined Radio technology. The properties of reliable network-centric capability and legacy 
+compatibility are to provide joint interoperability and secure information flow for 
 military platforms such as aircraft, submarines, surface ships and DoD installations.
 The problems of {\em network design} and {\em information flow} are directly motivated by
 applications to the AMF JTRS program.
@@ -211,7 +236,7 @@ range restrictions, and (4) There may be important information that needs
 to get from one part of the network to the other at the same time as 
 jamming or eavesdropping adversaries are rendeing certain links inoperational.
 Motivated by these issues we study the problems of {\em congestion
-minimization] and {information dissemination} in dynamic networks.
+minimization} and {\em information dissemination} in dynamic networks.
 
 \subsection{PI Information}
 Prof. R. Ravi works in the intersection of Operations Research and
