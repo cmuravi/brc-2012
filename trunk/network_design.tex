@@ -1,0 +1,144 @@
+\subsection{Network Design}
+\subsubsection{Survivable Network Design}  
+While the survivable network design problem is known to admit good
+approximation algorithms in the offline case, work in the online
+setting has mainly focused only on one-connected problems such as
+Steiner and generalized Steiner trees~\cite{qw11}. Indeed, no online
+algorithms were known for higher connected versions of the problem
+until our recent work~\cite{gkr10}. Our algorithms rely on certain
+tree embeddings and are inherently centralized.  We propose to study
+decentralized algorithms for survivable network design in an online
+setting where the underlying graph and costs are static while the
+connectivity requirements change online.
+
+\subsubsection{Aggregation trees} 
+Consider the problem of building an aggregation tree for tracking
+targets.  In a stochastic model of uncertainty, we may view each
+target as an object that is detected by one of the various agents
+according to a previously determined probability distribution.  In
+order to build a backbone network of the graph for coordination and
+control, we need to determine a subtree of the graph containing the
+root such that given the probability distribution of target
+materialization, the subtree maximizes the expected number of targets
+that can be covered by the agent nodes in the tree. If this backbone
+tree is a spanning tree, then all targets (each of which materializes
+at any one of the nodes) will be covered. At the other end, if no
+backbone or tree edges can be built a priori, the root can only detect
+targets that materialize in its vicinity. We thus have a trade-off
+between the allowed size of the Steiner tree and its expected target
+coverage that we propose to study in detail.
+
+We call this problem the \noindent{\bf \em Target Maximizing Rooted
+  Steiner Tree} problem.  We are given an undirected graph $G =
+(V,E)$, a root node $r$, and a set of targets $T_i, i = 1 \ldots
+t$. Each target $T_i$ is a probability distribution $p_i$ over $V$
+where $p_i(v)$ is the probability that the target $i$ is at node $v$
+(Note that $p_i(v) \geq 0 \ \forall v$ and $\sum_{v \in V} p_i(v) = 1
+\ \forall i$). Assume that the distributions $p_i$ and $p_j$ for $i
+\neq j$ are independent of each other. Given a target size $S$, our
+goal is to find a tree $F$ containing the root of at most $S$ edges
+such that the expected size of the targets that materialize in the
+node set of the tree is maximized.
+
+This problem can be generalized in various ways. First, the size bound
+$S$ can be extended to take into account distances between nodes or
+the relative costs of establishing connection between these pairs of
+agents. Second, the objective function can be changed to reflect other
+notions of reward such as the probability of detecting at least $N$
+targets for a given $N$. Third, the independence assumption on target
+materialization can be relaxed; this would not make any difference for
+the expected target size function but is interesting for other
+objectives. Fourth, the tree construction process can be modeled as
+the vehicle tour of a control packet in the ad hoc network, leading to
+vehicle routing problems that try to minimize expected size to cover
+all targets say. Fifth, the notion of stochastic uncertainty can be
+replaced by the requirement that the method is robust towards the
+worst of many possible scenarios of target materialization. We
+investigate one particularly strong notion of robustness for this
+problem next.
+
+\subsubsection{Universal approximations for Steiner trees} 
+We also plan to study aggregation trees under an adversarial model of
+uncertainty.  We have introduced the framework of {\em universal
+  approximations}\/ that provides a robust notion of quality with
+respect to {\em any} online sequence of
+arrivals~\cite{jia+lnrs:universal}.  Universality is a framework for
+dealing with uncertainty by guaranteeing a certain quality of goodness
+for all possible completions of the partial information set.
+Formally, an instance of the Universal Steiner Tree (\ust) problem is
+a pair $\langle G , r\rangle$ where $G = (V,E)$ is a weighted
+undirected graph, and $r$ is a distinguished vertex in $V$ that we
+refer to as the {\em root}.  For any spanning tree $T$ of $G$, define
+the {\em stretch}\/ of $T$ as $\max_{S \subseteq V}\cost{T_{S\cup
+    r}}/\cost{\OptSt{S\cup r}}$, where $\OptSt{X}$ is an optimal
+Steiner tree connecting the vertices in $X \cup r$.  The goal of the
+\ust\ problem is to determine a spanning tree with minimum stretch.
+
+Similar to the \ust\ problem, we can define universal versions of
+Traveling Salesperson Problem (\utsp), group Steiner tree, group TSP,
+and generalized Steiner network problems.  An instance of \utsp\ is a
+metric space $(V,d)$.  For any cycle (tour) $\TR$ containing all the
+vertices in $V$ and a subset $S$ of $V$, let $\TR_S$ denote the unique
+cycle over $S$ in which the ordering of vertices in $S$ is consistent
+with their ordering in $C$.  The stretch of $\TR$ is defined as
+$\max_{S\subseteq V} \cost{\TR_{S}}/\cost{\Optr{S}}$, where $\Optr{S}$
+denotes the minimum cost tour on set $S$. The \utsp\ is to find a tour
+on $V$ with minimum stretch.
+
+\Research{
+\label{prob:ust}
+What are the best stretch achievable for \ust, \utsp, and universal
+variants of the group Steiner tree, group TSP, and generalized Steiner
+network problems?}
+
+The notion of universality is captured by the complexity class
+$\Sigma_2^P$.  Previous work has shown that for any metric space,
+there exist Steiner trees that have universal poylogarithmic
+approximation ratios: our prior results~\cite{jia+lnst:universal}, and
+the improved results of $O(\log^2 n)$~\cite{gupta+hr:oblivious} that
+introduce the notion of oblivious network design.  Though these
+results reveal new onsights to the structural properties of Steiner
+trees and metrics, a major drawback is that {\em they do not apply to
+  arbitrary graphs}.  
+
+In very recent work, we have made some progress on this
+front~\cite{busch+drrs:ust}, and have identified a promising approach
+to attack the problem.  One of the major challenges in constructing a
+universal Steiner tree is that any tree will be forced to place some
+vertices far apart in tree, even though they may be ``nearby''
+according to the underlying graph distances.  As a result, the
+resulting spanning tree may perform poorly on a subset that includes
+this set and some other carefully chosen vertices.  To address this
+challenge, we introduce the notion of a {\em hierarchy of graph
+  partitions}, each of which guarantees small strong cluster diameter
+and bounded local neighbourhood intersections.  We have shown that the
+such a suitable hierarchy of graph partitions is essentially both
+sufficient and necessary for constructing low-stretch universal
+Steiner trees.  For metric spaces -- i.e., weighted complete graphs
+satisfying triangle inequality -- such a hierarchy can be constructed
+using the seminal work of Awerbuch and Peleg on sparse
+partitions~\cite{awerbuch+p:partition,peleg:distributeBook}.  
+
+It is a major open problem, however, to build such hierarchies for
+arbitrary graphs.  We have made preliminary progress by presenting
+partition hierarchies for general graphs that yield a $2^{O(\sqrt{\log
+    n})}$-stretch \ust\ for general graphs, and partition hierarchies
+for minor-free graphs that yield a polylogarithmic-stretch \ust\ for
+minor-free graphs.  Furthermore, all of the solutions proposed thus
+far are centralized.  We propose to develop distributed algorithms for
+constructing sparse partition hierarchies.  In an earlier work on
+aggregation trees for sensor network applications, we showed that this
+is achievable for the highly specialized case of grid
+graphs~\cite{jia+nrs:gist}.
+
+\iffalse
+
+RELATED WORK: karger-minkoff maybecast tree, gupta-nagarajan-ravi
+paper on adaptive TSP (icalp 10), and on stochastic vrp (OR, 2012) and
+refs in this for previous papers on TSP with independent demands on
+nodes (Bertsimas cycle heuristic). Also the basic expected target max
+is like orienteering with size bound on tree, and hence related to
+k-MST. Also related to garg-gupta-leonardi-sankowsi (SODA 08) which
+relates to Univ TSP.
+\fi
+
