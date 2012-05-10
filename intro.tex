@@ -142,8 +142,76 @@ $n$-node network be solved in $O(n + k)$ steps?
 \end{itemize}
 
 \subsection{Future Naval Relevance}
-*********
 
+The problems presented in this proposal are of direct relevance to a number of Naval (and other military) 
+initiatives. The most notable example is JTRS \cite{feickert} - Joint Tactical Radio System. 
+JTRS is a Department of 
+Defense initiative to develop a family of revolutionary software-defined tactical radios 
+that will provide networked voice, data and video communications, as well as interoperability 
+across the joint battlespace. Originally conceived in 1997 it has expanded into an ongoing 
+family of programs for the development and delivery of tactical communications and networking 
+solutions for the Air Force, Army, Navy and Marines. Though portions of the JTRS program have
+been scrapped or undergone transformation, nevertheless the research issues raised by some of 
+its subinitiative continue to be of significance today.
+The Airborne, Maritime, Fixed Station (AMF) subinitiative of the JTRS project is of particular 
+relevance.  It is concerned with the design, development, integration, testing and delivery of
+advanced communication systems to modernize current radio systems with next-generation 
+Software Defined Radio technology. Reliable network-centric capability and legacy 
+compatibility is to provide joint interoperability and secure information flow for 
+military platforms such as aircraft, submarines, surface ships and DoD installations.
+The problems of {\em network design} and {\em information flow} are directly motivated by
+applications to the AMF JTRS program.
+
+There is immense ongoing interest in the development of an 
+IP-based Air-and-Surface borne Network based on mobile ad hoc 
+networking concepts. Such a network may consist of 
+disparate mobile airborne and sea-based platforms; will provide reliable ad 
+hoc interconnectivity to terrestrial and airborne nodes; and 
+will be applicable to net-centric military communications. A 
+wireless network that includes an airborne component is 
+architecturally reminiscent of conventional wireless 
+telecommunications networks. Relatively quasi-stable 
+airborne platforms, equipped with directional data links, could 
+form a high capacity backbone core akin to the backhaul in 
+telecommunications networks. This directional backbone core 
+would serve as a reliable data transport infrastructure for 
+highly dynamic terrestrial and airborne platforms at the 
+network edge, which are typically equipped with lower 
+capacity omni-directional radios. The latter are akin to end 
+users in conventional telecommunications networks.  
+As in any mobile network, the performance of such a network 
+depends to a great extent on the prevailing network topology. 
+The network topology determines the availability and the 
+characteristics of the data path between any two nodes of the 
+network. These characteristics directly dictate the performance 
+of data transmission, such as throughput and delay, between 
+the nodes. For a network of fixed nodes the topology is 
+essentially static. It is determined by deployed physical 
+connections between nodes. For a network with mobile nodes 
+the topology is dynamic with several topology choices 
+possible. The design problems of {\em survivable networks} 
+and {\em aggregation trees}  are motivated by the
+need for active topology management and optimization in 
+these Air-and-Surface borne networks with 
+the aim to improve overall communication and decision-making performance. 
+
+In this proposal, we are interested not just in the management and 
+optimization of the topology but also the sharing and routing of 
+relevant information in a timely manner so as to satisfy mission-critical 
+needs. The movement of information on the network core is a challenging 
+proposition due, in particular, to the following factors: (1) The 
+nodes have a limited number of  directional links (and this 
+number may be different for different nodes), (2) The links 
+may have different and time-varying data rates (for instance, due to differences 
+in received Signal to Interference and Noise Ratio (SINR)), 
+(3) The nodes may be moving in space causing changes in underlying topology;
+with incoming and outgoing links of different radio 
+types, such compatibilities introducing communication constraints over and above
+range restrictions, and (4) There may be important information that needs
+to get from one part of the network to the other at the same time as 
+jamming or eavesdropping adversaries are rendeing certain links inoperational.
+Motivated by these issues we study the problems of {\em congestion
+minimization] and {information dissemination} in dynamic networks.
 
 \subsection{PI Information}
 Prof. R. Ravi works in the intersection of Operations Research and
