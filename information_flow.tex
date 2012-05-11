@@ -16,53 +16,82 @@ information flow problems: congestion-minimizing degree-bounded flows,
 and information dissemination under adversarial dynamics.
 
 \subsubsection{Congestion-minimizing degree-bounded flows in dynamic
-  networks} In earlier work \cite{awerbuch+l:flow}, distributed
-algorithms for finding congestion minimizing flows in certain dynamic
-networks were presented.  However the routes undertaken by these flows
-were unconstrained and expensive to maintain.  We plan to build on our
-past work on efficient algorithms for converting optimal flows into
-near-optimal degree-bounded
-flows~\cite{chen+klrsv:flow,chen+mrs:flow}; our current
-algorithms involve some refinement techniques that require global
-knowledge.  We believe that the local balancing approach
-of~\cite{awerbuch+l:flow} in conjunction with our flow refinement
-techniques will enable us to maintain near-optimal degree-bounded
-flows in dynamic networks.  We also plan to consider generalizations
-of the problem incorporating link errors and coding techniques.
+  networks} A key requirement of scalable routing algorithms is to
+severely limit the amount of information that each network node
+maintains; such lightweight protocols are much more effective in a
+large-scale dynamic setting.  Providing good guarantees on performance
+measures such as congestion, however, then poses a major challenge.
+In earlier work \cite{awerbuch+l:flow}, distributed algorithms for
+finding congestion minimizing flows in certain dynamic networks were
+presented.  However the routes undertaken by these flows were
+unconstrained and expensive to maintain.  We plan to build on our past
+work on efficient algorithms for converting optimal flows into
+near-optimal {\em degree-bounded}
+flows~\cite{chen+klrsv:flow,chen+mrs:flow}; we call a traffic flow
+$d$-bounded if all flow through a node $v$ destined for a sink $t$
+leaves $v$ through at most $d$ neighbors.  A small bound for $d$
+ensures that each node maintains very limited state per destination.
+Routing on the Internet is, in fact, $1$-bounded or
+confluent~\cite{chen+mrs:flow}.  For reducing congestion in an ad-hoc
+network environment, however, $d$-bounded flows for a small constant
+$d$ will achieve significantly better performance.  Our current
+algorithms for obtaining degree-bounded flows involve some refinement
+techniques that require global knowledge.  We believe that the local
+balancing approach of~\cite{awerbuch+l:flow}, in conjunction with our
+flow refinement techniques, will enable us to maintain near-optimal
+degree-bounded flows in dynamic networks.
 
+\Research{
+\label{prob:cmdf}
+Design distributed algorithms for congestion-minimizing degree-bounded
+multicommodity flows in dynamic networks.  }
+
+We will begin with a stochastic model of traffic demand that assumes a
+fixed rate of communication among the various source-destination
+pairs, and a dynamic network model that bounds the rate of change of
+the network.  We will then consider more adversarial models of
+changing traffic demand and network dynamics assuming some minimum
+network capacity, while ensuring that we maintain the degree-bound
+constraint on the traffic flows.  We also plan to consider
+generalizations of the problem incorporating link errors and coding
+techniques.
+
+\junk{
 This problem can be generalized in a multiplicity of ways. Rather than
 one commodity one can consider multiple commodities, each with their
 own target or destination nodes. Second, one can consider the
 availability of end-to-end capacities assuming duplex
-connections. Third, one can assume different forms of error that
+connections.
+ Third, one can assume different forms of error that
 affect link capacities and the use of techniques such as network
 coding. Finally, one can also consider integrating the route discovery
 problem with the problem of optimizing the flows.
-
-
-\Research{
-\label{prob:cmdf}
-Design distributed algorithms for congestion-minimizing degree-bounded flows in dynamic multicommodity networks.
 }
 
-\subsubsection{Information dissemination in adversarial networks}
-We will conduct a comprehensive study of fully distributed algorithms
-for information dissemination in dynamic networks controlled by
-adversaries.  In such highly dynamic scenarios, the algorithms need to
-be lightweight and maintain very limited state since it is impossible
-to coordinate or reach significant
-consensus~\cite{fich+r:impossibility}.  We will begin by studying
-the basic $k$-broadcast problem.  Recall that in the $k$-broadcast
-problem, $k$ of the $n$ nodes each have a message that need to be
-disseminated to every node in the network.  Suppose that the nodes are
-synchronized and in each step, each node can broadcast the equivalent
-of a bounded number of tokens to its neighbors~\cite{kuhn+lo:dynamic}.
-What is the minimum number of steps needed to complete the
-dissemination?  If the network is completely static and connected,
-then a local token-forwarding process on a spanning tree of the
-network can accomplish the task in $O(n + k)$ steps, independent of
-the structure of the network.  In a dynamic network as in the above
-model however, the problem is much more challenging.
+
+\subsubsection{Information spreading in adversarial networks}
+Problem~\ref{prob:cdmf} considers the task of routing point-to-point
+multicommodity flows in networks with some restricted dynamics.  We
+also plan to conduct a comprehensive study of fully distributed
+algorithms for the more specialized task of information spreading in
+highly dynamic networks controlled by adversaries.  In such scenarios,
+the algorithms need to be lightweight, with each node continually
+making decisions without any knowledge of the future, and possibly
+even no information about the current network neighborhood.  Many
+basic coordination tasks are very difficult or even impossible to
+achieve in dynamic networks~\cite{fich+r:impossibility}.  We will
+begin by studying the basic $k$-broadcast problem.  Recall that in the
+$k$-broadcast problem, $k$ of the $n$ nodes each have a message that
+need to be disseminated to every node in the network.  Suppose that
+the nodes are synchronized and in each step, each node can broadcast
+the equivalent of a bounded number of tokens to its
+neighbors~\cite{kuhn+lo:dynamic}.  What is the minimum number of steps
+needed to complete the dissemination?  If the network is completely
+static and connected, then a local token-forwarding process on a
+spanning tree of the network can accomplish the task in $O(n + k)$
+steps, independent of the structure of the network.  In a dynamic
+network as in the above model however, the problem is much more
+challenging.
 
 \Research{
 \label{prob:broadcast}
@@ -111,20 +140,27 @@ trees~\cite{charikar+ccdgg:steiner,halperin+k:steiner,zosin+k:steiner}
 and bounding the network coding advantage in multicast over directed
 networks~\cite{agarwal+c:coding,sanders+et:flow}.
 
-We expect to quantify our results in terms of relevant parameters
-including locality of the dynamics, conductance/expansion of the
-evolving network, initial entropy of the information distribution, and
-knowledge available to the dissemination algorithm.  
-\iffalse***** Repeats last para
-We have also
-shown that the dissemination problem can be reduced to the problem of
-packing Steiner trees in directed graphs, and thus has deep
-connections with the long-standing open problems of approximating
-directed Steiner trees~\cite{charikar+ccdgg:steiner} and bounding the
-network coding advantage in multicast over directed networks.
-\fi
+Following the $k$-broadcast problem, we will study more general
+information spreading problems including consensus, computing
+aggregates (that often arise in sensor network environments), and
+larger classes of computations such as separable
+functions~\cite{mosk-aoyama+s:separable}.
 
 \Research{
 \label{prob:dynamic_general}
 Design and analyze fully distributed gossip-based algorithms for
 consensus and aggregation, and computing separable functions. }
+
+We expect to quantify all our results in terms of relevant parameters
+including locality of the dynamics, conductance/expansion of the
+evolving network, initial entropy of the information distribution, and
+knowledge available to the dissemination algorithm.  
+
+\iffalse*****
+Repeats last para We have also shown that the dissemination problem
+can be reduced to the problem of packing Steiner trees in directed
+graphs, and thus has deep connections with the long-standing open
+problems of approximating directed Steiner
+trees~\cite{charikar+ccdgg:steiner} and bounding the network coding
+advantage in multicast over directed networks.  \fi
+
