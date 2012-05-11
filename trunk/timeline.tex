@@ -1,24 +1,26 @@
 \section{Project Schedule and Milestones}
 
 The schedule for this project is given in the
-Tabel~\ref{table:timeline}.  We expect each topic to span
+Table~\ref{table:timeline}.  We expect each topic to span
 approximately 4 years of the project.  The total effort is evenly
-distributed over the 5 year span of the project.
+distributed over the 5 year span of the project.  The three PIs plan
+to work closely on all of the research proposed in this project; the
+table lists the lead PI for each of the topics.
 
 \begin{table}[h]
 \begin{tabular}{||l|c|c|c|c|c|l||}
 \hline\hline
-{\bf Topic} & {\bf Y1} & {\bf Y2} & {\bf Y3} & {\bf Y4} & {\bf Y5} & {\bf PIs (lead in bold)}\\\hline\hline
-Survivable network design & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{}  & &
+{\bf Topic} & {\bf Y1} & {\bf Y2} & {\bf Y3} & {\bf Y4} & {\bf Y5} & {\bf Lead PI}\\\hline
+T1: Survivable network design & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{}  & &
 %\multicolumn{1}{>{\columncolor[black]{0.8}}c}{} &
 %\multicolumn{1}{>{\columncolor[black]{0.8}}c}{} &
 %\multicolumn{1}{>{\columncolor[black]{0.8}}c}{} &
 %\multicolumn{1}{>{\columncolor[black]{0.8}}c}{} &
-{\bf Ravi}, Rajaraman\\\hline
-Stochastic aggregation tree problems & & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} & {\bf Ravi}, Sundaram\\\hline
-Universal aggregation trees  & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{}  & & {\bf Sundaram}, Rajaraman\\ \hline
-Congestion-minimizing degree-bounded flows & & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} & {\bf Sundaram}, Ravi\\ \hline
-Information dissemination in adversarial networks & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} &  & {\bf Rajaraman}, Ravi\\ \hline
+Ravi\\\hline
+T2: Stochastic aggregation tree problems & & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} & Ravi\\\hline
+T3: Universal aggregation trees  & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{}  & & Sundaram\\ \hline
+T4: Congestion-minimizing degree-bounded flows & & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} & Sundaram\\ \hline
+T5: Information dissemination in adversarial networks & \multicolumn{4}{>{\columncolor[rgb]{0.650000,0.741000,0.858000}}r}{} &  & Rajaraman\\ \hline
 \end{tabular}
 \caption{Project timeline \label{table:timeline}}
 \end{table}
@@ -35,22 +37,33 @@ period devoted to the topic:
 \begin{itemize}
 \item
 {\sl Problem formulation:} Precise formulations for the core problem
-and its variants.  (End of 1st year)
+and its variants.  (end of Y1 for T1, T3, and T5; end of Y2 for T4 and T5)
 \item
-{\sl Preliminary bounds:} Basic bounds on the competitive ratio. (End of 1st year)
+{\sl Preliminary bounds:} Preliminary bounds on the core problem. (end
+of Y1 for T1, T3, and T5; end of Y2 for T4 and T5)
 \item
 {\sl Results for online models:} Results for suitable online stochastic and
-online adversarial models. (End of 2nd and 3rd years)
+online adversarial models. (end of Y2 for T1, T3, and T5; end of Y3 for T4 and T5)
 \item
-{\sl Decentralization:} Quantify the price of decentralization. (End of 4th year)
+{\sl Decentralization:} Quantify the price of decentralization.  (end
+of Y3 for T1, T3, and T5; end of Y4 for T4 and T5)
 \item
-{\sl Extensions:} Adapt results to model extensions. (End of 5th year)
+{\sl Extensions and integration:} Adapt results to model extensions
+and integrate the technical results across topics. (end of Y5)
 \end{itemize}
 
 \section{Management Approach}
 
-The whole research team, consisting of the three PIs and all graduate students working on the project will coordinate via bi-weekly meetings arranged online (through a service such as Skype). Research progress in the form of meeting reports, working papers, and any experimental code generated will be shared through a project repository online. A face-to-face annual meeting of the project members will be held every year just before the annual report is due to gather all the information for the report and re-evaluate the project goals and schedule - If appropriate, we will plan this meeting as part of a visit to a professional meeting that we all attend.
-
+The whole research team, consisting of the three PIs and all graduate
+students working on the project will coordinate via bi-weekly meetings
+arranged online (through a service such as Skype). Research progress
+in the form of meeting reports, working papers, and any experimental
+code generated will be shared through a project repository online. A
+face-to-face annual meeting of the project members will be held every
+year just before the annual report is due to gather all the
+information for the report and re-evaluate the project goals and
+schedule.  If appropriate, we will plan this meeting as part of a
+visit to a professional meeting that we all attend.
 
 \section{Current and Pending Support}
 
@@ -73,8 +86,19 @@ The whole research team, consisting of the three PIs and all graduate students w
 
 \BfPara{BAE subcontract for R. Rajaraman and R. Sundaram}
 \begin{enumerate}
-\item Title of Proposal and Summary: Communications in Extreme FR Spectrum Conditions (Commex). 
-\item Source and amount of funding: BAE subcontract on DARPA grant, for \$650K.
+\item Title of Proposal and Summary: {\bf Communications in Extreme FR
+  Spectrum Conditions (Commex)}.  This subcontract consists of three
+  tasks towards the design of a communication protocol for ad hoc
+  networks under extreme adversarial (jamming) conditions: (i) Develop
+  a non-cooperative game theory engine, conduct a theoretical
+  analysis, and develop the associated algorithms and software; (ii)
+  Develop algorithms and techniques that provide optimized protocol
+  mechanism hopping at the physical and media access control layers;
+  (iii) Perform theoretical analysis and trade studies to characterize
+  the performance of jammer jujitsu interference deception algorithms
+  against a range of jammer/interference models.  
+\item Source and amount of funding: BAE Systems subcontract on DARPA
+  grant, for \$650K.
 \item Percentage effort devoted: 1 summer month in 2012, and 1 course buyout in 2012, for each PI
 \item Identity of prime Offeror: Northeastern University
 \item Technical Contact: Prof. Ravi Sundaram,  202 WVH, CCIS, Northeastern University

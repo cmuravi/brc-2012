@@ -104,7 +104,26 @@ problem in the next subsection.
 Devise offline approximation algorithms for the Target Maximizing Rooted
 Steiner Tree problem with good constant performance ratio. Extend the techniques to the various generalizations and to the robust and distributed settings.}
 
-As stated, the problem is closely related to the $k$-MST problem that two of us introduced in an early paper~\cite{RSMRR94}, and for which we eventually designed the first constant-factor approximation algorithm~\cite{BRV99}. In this problem we are given an undirected edge-weighted graph with a root and an integer $k$, and the goal is to find a minimum-weight spanning tree connecting the root with at least $k$ other nodes. Our target maximizing version is close to the complementary version of the problem where we are given a bound on the cost of the tree and the goal is to maximize the number of nodes covered. This is also related to the {\em Orienteering Problem} where the object collecting the nodes is an orienteering path rather than a tree, and for which constant factor approximations are known~\cite{BCKLMM03}. We have recently also devised approximation algorithms for stochastic versions of the orienteering problem~\cite{GKNR12} but the stochasticity is related to delays at the nodes to fetch the rewards rather than the location of targets on the visited nodes. These are all interesting approaches that we propose to investigate to solve the target maximizing problems we propose. Extending these centralized methods to work in a distributed setting is also a challenging direction we hope to purse.
+As stated, the problem is closely related to the $k$-MST problem that
+PIs Ravi and Sundaram introduced in an early paper~\cite{RSMRR94}, and
+for which we eventually designed the first constant-factor
+approximation algorithm~\cite{BRV99}. In this problem we are given an
+undirected edge-weighted graph with a root and an integer $k$, and the
+goal is to find a minimum-weight spanning tree connecting the root
+with at least $k$ other nodes. Our target maximizing version is close
+to the complementary version of the problem where we are given a bound
+on the cost of the tree and the goal is to maximize the number of
+nodes covered. This is also related to the {\em Orienteering Problem}
+where the object collecting the nodes is an orienteering path rather
+than a tree, and for which constant factor approximations are
+known~\cite{BCKLMM03}. We have recently also devised approximation
+algorithms for stochastic versions of the orienteering
+problem~\cite{GKNR12} but the stochasticity is related to delays at
+the nodes to fetch the rewards rather than the location of targets on
+the visited nodes. These are all interesting approaches that we
+propose to investigate to solve the target maximizing problems we
+propose. Extending these centralized methods to work in a distributed
+setting is also a challenging direction we hope to pursue.
 
 \iffalse
 RELATED WORK: karger-minkoff maybecast tree, gupta-nagarajan-ravi
@@ -147,18 +166,19 @@ on $V$ with minimum stretch.
 \Research{
 \label{prob:ust}
 What are the best stretch achievable for \ust, \utsp, and universal
-variants of the group Steiner tree, group TSP, and generalized Steiner
-network problems?}
+variants of the group Steiner tree, and special cases of SNDP?}
 
 The notion of universality is captured by the complexity class
-$\Sigma_2^P$.  Previous work has shown that for any metric space,
-there exist Steiner trees that have universal poylogarithmic
-approximation ratios: our prior results~\cite{jia+lnrs:universal}, and
-the improved results of $O(\log^2 n)$~\cite{gupta+hr:oblivious} that
-introduce the notion of oblivious network design.  Though these
-results reveal new onsights to the structural properties of Steiner
-trees and metrics, a major drawback is that {\em they do not apply to
-  arbitrary graphs}.
+$\Sigma_2^P$, and we conjecture that determining the best universal
+algorithms for the above problems is $\Sigma^P_2$-hard.  In previous
+work, however, we have been able to achieve near-optimal universal
+solutions in some cases.  For any metric space, there exist Steiner
+trees that have universal poylogarithmic approximation ratios: our
+prior results~\cite{jia+lnrs:universal}, and the improved results of
+$O(\log^2 n)$~\cite{gupta+hr:oblivious} that introduce the notion of
+oblivious network design.  Though these results reveal new onsights to
+the structural properties of Steiner trees and metrics, a major
+drawback is that {\em they do not apply to arbitrary graphs}.
 
 In very recent work, we have made some progress on this
 front~\cite{busch+drrs:ust}, and have identified a promising approach
