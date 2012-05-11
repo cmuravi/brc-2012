@@ -1,17 +1,59 @@
 \subsection{Network Design}
-\subsubsection{Survivable Network Design}  
-While the survivable network design problem is known to admit good
-approximation algorithms in the offline case, work in the online
-setting has mainly focused only on one-connected problems such as
-Steiner and generalized Steiner trees~\cite{qw11}. Indeed, no online
-algorithms were known for higher connected versions of the problem
-until our recent work~\cite{gkr10}. Our algorithms rely on certain
-tree embeddings and are inherently centralized.  We propose to study
-decentralized algorithms for survivable network design in an online
-setting where the underlying graph and costs are static while the
-connectivity requirements change online.
+\subsubsection{Survivable Network Design}
+Since the SNDP is NP-hard (it contains the Steiner tree problem as a special case), it has been widely studied from the viewpoint of approximation algorithms (See e.g.,~\cite{GK11} for a survey of results). These problems were
+one of the earliest applications of the primal-dual method in this area
+which led, over a sequence of papers, to the development of an $O(\log
+r_{\max})$-approximation algorithm~\cite{GGPSTW94}.  Subsequently, one of the first uses of iterative rounding in approximation algorithms
+led to a $2$-approximation for this problem (and for the general problem
+of network design with weakly-supermodular functions)~\cite{Jain01}.
 
-\subsubsection{Aggregation trees} 
+In~\cite{gkr10}, we studied these problems in the
+\emph{online} setting: we are given a graph with edge-costs, and an
+upper bound $r_{\max}$ on the connectivity demand. A sequence of vertex pairs $\{i,j\} \in V
+\times V$ is presented to us over time, each with some edge-connectivity
+demand $r_{ij}$---at this point we may need to buy some edges to ensure
+that all the edges bought by the algorithm provide
+an edge-connectivity of  $r_{ij}$ between vertices $i$ and $j$.  The goal is to remain
+competitive with the optimal offline solution of the current demand set.
+Work in this online
+setting has mainly focused only on one-connected problems such as
+Steiner and generalized Steiner trees~\cite{qw11}.
+No online algorithms were previously known
+for this problem even for the online rooted $2$-connectivity problem (i.e., for
+the case where all the vertex pairs share a root vertex $r$ and the
+connectivity requirement is~$2$ for all pairs) while we noted
+a lower bound of $\Omega(\min\{|D|, \log n\})$ on the competitive ratio for this special case, where $D$ is the set of terminal pairs given to the
+algorithm. This is in contrast to the case of online $1$-connectivity (i.e., online Steiner forest) where the best online algorithm is $\Theta(\log |D|)$-competitive \cite{BCsteiner97}.
+Our main result for the edge-connected survivable network design problem is an $O(r_{\max} \log^3 n)$-competitive randomized online algorithm against oblivious adversaries.
+
+Our algorithms use the standard embeddings of graphs into random subtrees (i.e., into \emph{singly    connected} subgraphs) as an intermediate step to get algorithms for higher connectivity. As a consequence of using these random embeddings, our algorithms are competitive only against oblivious adversaries. A natural extension that is still open is whether out methods can be extended to work against adaptive adversaries.
+
+Furthermore, our algorithms relying on tree embeddings and inherently centralized.  
+We propose to study decentralized algorithms for survivable network design in an online
+setting where the underlying graph and costs are static while the
+connectivity requirements change online. 
+
+Finally, our algorithms are all centralized, and it is unclear how to extend even the one-connected online algorithms for Steiner trees to the distributed setting.
+
+\Research{
+\label{prob:sndp}
+Devise distributed online algorithms for the Survivable Network Design Problem with good competitive ratios against adaptive adversaries.}
+
+Another direction to extend the SNDP is the
+stochastic case when the instance is drawn according to a probability
+distribution. In ~\cite{gkr10}, we considered the case when we have a product
+distribution: for each pair $i,j$ of vertices we are given a probability $p_{ij}$,
+and are guaranteed that \emph{tomorrow} each pair will flip their coins
+independently, and if the coin turns up heads, they would demand
+$k$-connectivity. We can buy some edges today at cost $c(\cdot)$, but if
+we wait for the actual set $D$, the edges will cost $\lambda c(\cdot)$
+tomorrow, for a pre-specified inflation parameter $\lambda \geq 1$; the goal
+is to minimize the sum of the cost of edges bought today and the
+expected cost of augmentation edges bought tomorrow (at the inflated price).
+In that work, we assumed for simplicity that all pairs have the the same
+connectivity requirement of $k$. A simple generalization would allow each arriving pair to specify even the connectivity to be any value in $\{0,1\ldots,k\}$ according to a pre-defined probability distribution -- we'll now have values $p_{ij}(\kappa)$ for $\kappa \in \{0,1\ldots,k\}$, summing to one. We propose to extend our previous work to this more interesting setting that allows for more general stochastic specifications of connectivity requirements.
+
+\subsubsection{Aggregation trees}
 Consider the problem of building an aggregation tree for tracking
 targets.  In a stochastic model of uncertainty, we may view each
 target as an object that is detected by one of the various agents
@@ -29,13 +71,13 @@ between the allowed size of the Steiner tree and its expected target
 coverage that we propose to study in detail.
 
 We call this problem the \noindent{\bf \em Target Maximizing Rooted
-  Steiner Tree} problem.  We are given an undirected graph $G =
+Steiner Tree} problem.  We are given an undirected graph $G =
 (V,E)$, a root node $r$, and a set of targets $T_i, i = 1 \ldots
 t$. Each target $T_i$ is a probability distribution $p_i$ over $V$
 where $p_i(v)$ is the probability that the target $i$ is at node $v$
 (Note that $p_i(v) \geq 0 \ \forall v$ and $\sum_{v \in V} p_i(v) = 1
 \ \forall i$). Assume that the distributions $p_i$ and $p_j$ for $i
-\neq j$ are independent of each other. Given a target size $S$, our
+\neq j$ are independent of each other. Given a budget $S$ on the size, our
 goal is to find a tree $F$ containing the root of at most $S$ edges
 such that the expected size of the targets that materialize in the
 node set of the tree is maximized.
@@ -55,9 +97,26 @@ all targets say. Fifth, the notion of stochastic uncertainty can be
 replaced by the requirement that the method is robust towards the
 worst of many possible scenarios of target materialization. We
 investigate one particularly strong notion of robustness for this
-problem next.
+problem in the next subsection.
 
-\subsubsection{Universal approximations for Steiner trees} 
+\Research{
+\label{prob:tmrst}
+Devise offline approximation algorithms for the Target Maximizing Rooted
+Steiner Tree problem with good constant performance ratio. Extend the techniques to the various generalizations and to the robust and distributed settings.}
+
+As stated, the problem is closely related to the $k$-MST problem that two of us introduced in an early paper~\cite{RSMRR94}, and for which we eventually designed the first constant-factor approximation algorithm~\cite{BRV99}. In this problem we are given an undirected edge-weighted graph with a root and an integer $k$, and the goal is to find a minimum-weight spanning tree connecting the root with at least $k$ other nodes. Our target maximizing version is close to the complementary version of the problem where we are given a bound on the cost of the tree and the goal is to maximize the number of nodes covered. This is also related to the {\em Orienteering Problem} where the object collecting the nodes is an orienteering path rather than a tree, and for which constant factor approximations are known~\cite{BCKLMM03}. We have recently also devised approximation algorithms for stochastic versions of the orienteering problem~\cite{GKNR12} but the stochasticity is related to delays at the nodes to fetch the rewards rather than the location of targets on the visited nodes. These are all interesting approaches that we propose to investigate to solve the target maximizing problems we propose. Extending these centralized methods to work in a distributed setting is also a challenging direction we hope to purse.
+
+\iffalse
+RELATED WORK: karger-minkoff maybecast tree, gupta-nagarajan-ravi
+paper on adaptive TSP (icalp 10), and on stochastic vrp (OR, 2012) and
+refs in this for previous papers on TSP with independent demands on
+nodes (Bertsimas cycle heuristic). Also the basic expected target max
+is like orienteering with size bound on tree, and hence related to
+k-MST. Also related to garg-gupta-leonardi-sankowsi (SODA 08) which
+relates to Univ TSP.
+\fi
+
+\subsubsection{Universal approximations for Steiner trees}
 We also plan to study aggregation trees under an adversarial model of
 uncertainty.  We have introduced the framework of {\em universal
   approximations}\/ that provides a robust notion of quality with
@@ -71,7 +130,7 @@ undirected graph, and $r$ is a distinguished vertex in $V$ that we
 refer to as the {\em root}.  For any spanning tree $T$ of $G$, define
 the {\em stretch}\/ of $T$ as $\max_{S \subseteq V}\cost{T_{S\cup
     r}}/\cost{\OptSt{S\cup r}}$, where $\OptSt{X}$ is an optimal
-Steiner tree connecting the vertices in $X \cup r$.  The goal of the
+Steiner tree connecting the vertices in $X$.  The goal of the
 \ust\ problem is to determine a spanning tree with minimum stretch.
 
 Similar to the \ust\ problem, we can define universal versions of
@@ -99,7 +158,7 @@ the improved results of $O(\log^2 n)$~\cite{gupta+hr:oblivious} that
 introduce the notion of oblivious network design.  Though these
 results reveal new onsights to the structural properties of Steiner
 trees and metrics, a major drawback is that {\em they do not apply to
-  arbitrary graphs}.  
+  arbitrary graphs}.
 
 In very recent work, we have made some progress on this
 front~\cite{busch+drrs:ust}, and have identified a promising approach
@@ -117,7 +176,7 @@ sufficient and necessary for constructing low-stretch universal
 Steiner trees.  For metric spaces -- i.e., weighted complete graphs
 satisfying triangle inequality -- such a hierarchy can be constructed
 using the seminal work of Awerbuch and Peleg on sparse
-partitions~\cite{awerbuch+p:partition,peleg:distributeBook}.  
+partitions~\cite{awerbuch+p:partition,peleg:distributeBook}.
 
 It is a major open problem, however, to build such hierarchies for
 arbitrary graphs.  We have made preliminary progress by presenting
@@ -130,15 +189,4 @@ constructing sparse partition hierarchies.  In an earlier work on
 aggregation trees for sensor network applications, we showed that this
 is achievable for the highly specialized case of grid
 graphs~\cite{jia+nrs:gist}.
-
-\iffalse
-
-RELATED WORK: karger-minkoff maybecast tree, gupta-nagarajan-ravi
-paper on adaptive TSP (icalp 10), and on stochastic vrp (OR, 2012) and
-refs in this for previous papers on TSP with independent demands on
-nodes (Bertsimas cycle heuristic). Also the basic expected target max
-is like orienteering with size bound on tree, and hence related to
-k-MST. Also related to garg-gupta-leonardi-sankowsi (SODA 08) which
-relates to Univ TSP.
-\fi
 
