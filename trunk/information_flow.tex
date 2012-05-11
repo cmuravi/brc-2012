@@ -39,7 +39,13 @@ affect link capacities and the use of techniques such as network
 coding. Finally, one can also consider integrating the route discovery
 problem with the problem of optimizing the flows.
 
-\subsubsection{Information dissemination in adversarial networks} 
+
+\Research{
+\label{prob:cmdf}
+Design distributed algorithms for congestion-minimizing degree-bounded flows in dynamic multicommodity networks.
+}
+
+\subsubsection{Information dissemination in adversarial networks}
 We will conduct a comprehensive study of fully distributed algorithms
 for information dissemination in dynamic networks controlled by
 adversaries.  In such highly dynamic scenarios, the algorithms need to
@@ -90,7 +96,7 @@ One approach we plan to pursue is to consider a hybrid
 forwarding-coding algorithm in which nodes exchange information in the
 symmetric difference of what they currently hold, which can be done in
 $O(\log n)$ rounds of communication using
-fingerprinting~\cite{mitzenmacher-2005-fastmixing}.  We have shown 
+fingerprinting~\cite{mitzenmacher-2005-fastmixing}.  We have shown
 that if the entropy of the initial distribution of information
 is high, then convergence to full dissemination is rapid.  We will
 also consider weaker notions of the adversary (e.g., offline or
@@ -101,21 +107,24 @@ packing Steiner trees in directed
 graphs~\cite{cheriyan+s:steiner,dutta+prs:dynamic}, and thus has deep
 connections with the long-standing open problems of approximating
 directed Steiner
-trees~\cite{charikar+ccdgg:steiner,zosin+k:steiner,halperin+k:steiner}
+trees~\cite{charikar+ccdgg:steiner,halperin+k:steiner,zosin+k:steiner}
 and bounding the network coding advantage in multicast over directed
 networks~\cite{agarwal+c:coding,sanders+et:flow}.
 
 We expect to quantify our results in terms of relevant parameters
 including locality of the dynamics, conductance/expansion of the
 evolving network, initial entropy of the information distribution, and
-knowledge available to the dissemination algorithm.  We have also
+knowledge available to the dissemination algorithm.  
+\iffalse***** Repeats last para
+We have also
 shown that the dissemination problem can be reduced to the problem of
 packing Steiner trees in directed graphs, and thus has deep
 connections with the long-standing open problems of approximating
 directed Steiner trees~\cite{charikar+ccdgg:steiner} and bounding the
 network coding advantage in multicast over directed networks.
+\fi
 
 \Research{
 \label{prob:dynamic_general}
 Design and analyze fully distributed gossip-based algorithms for
-consensus and aggregation, and computing separable functions? }
+consensus and aggregation, and computing separable functions. }
