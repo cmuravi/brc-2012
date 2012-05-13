@@ -12,26 +12,28 @@ underlying network; however, to guarantee high-throughput information
 flow for a dynamic distributed environment, we need to control
 congestion, and focus on local lightweight algorithms that maintain
 limited state.  In this project, we will study two important
-information flow problems: congestion-minimizing degree-bounded flows,
-and information dissemination under adversarial dynamics.
+information flow problems: congestion-minimizing degree-bounded flows
+(Section~\ref{sec:confluent}), and information spreading under
+adversarial dynamics (Section~\ref{sec:spreading}).
 
 \subsubsection{Congestion-minimizing degree-bounded flows in dynamic
-  networks} A key requirement of scalable routing algorithms is to
-severely limit the amount of information that each network node
-maintains; such lightweight protocols are much more effective in a
-large-scale dynamic setting.  Providing good guarantees on performance
-measures such as congestion, however, then poses a major challenge.
-In earlier work \cite{awerbuch+l:flow}, distributed algorithms for
-finding congestion minimizing flows in certain dynamic networks were
-presented.  However the routes undertaken by these flows were
-unconstrained and expensive to maintain.  We plan to build on our past
-work on efficient algorithms for converting optimal flows into
-near-optimal {\em degree-bounded}
-flows~\cite{chen+klrsv:flow,chen+mrs:flow}; we call a traffic flow
-$d$-bounded if all flow through a node $v$ destined for a sink $t$
-leaves $v$ through at most $d$ neighbors.  A small bound for $d$
-ensures that each node maintains very limited state per destination.
-Routing on the Internet is, in fact, $1$-bounded or
+  networks}
+\label{sec:confluent}
+A key requirement of scalable routing algorithms is to severely limit
+the amount of information that each network node maintains; such
+lightweight protocols are much more effective in a large-scale dynamic
+setting.  Providing good guarantees on performance measures such as
+congestion, however, then poses a major challenge.  In earlier work
+\cite{awerbuch+l:flow}, distributed algorithms for finding congestion
+minimizing flows in certain dynamic networks were presented.  However
+the routes undertaken by these flows were unconstrained and expensive
+to maintain.  We plan to build on our past work on efficient
+algorithms for converting optimal flows into near-optimal {\em
+  degree-bounded} flows~\cite{chen+klrsv:flow,chen+mrs:flow}; we call
+a traffic flow $d$-bounded if all flow through a node $v$ destined for
+a sink $t$ leaves $v$ through at most $d$ neighbors.  A small bound
+for $d$ ensures that each node maintains very limited state per
+destination.  Routing on the Internet is, in fact, $1$-bounded or
 confluent~\cite{chen+mrs:flow}.  For reducing congestion in an ad-hoc
 network environment, however, $d$-bounded flows for a small constant
 $d$ will achieve significantly better performance.  Our current
@@ -70,6 +72,7 @@ problem with the problem of optimizing the flows.
 
 
 \subsubsection{Information spreading in adversarial networks}
+\label{sec:spreading}
 Problem~\ref{prob:cmdf} considers the task of routing point-to-point
 multicommodity flows in networks with some restricted dynamics.  We
 also plan to conduct a comprehensive study of fully distributed

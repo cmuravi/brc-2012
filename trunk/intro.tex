@@ -1,11 +1,13 @@
 \section{Introduction}
 As communication devices and sensor infrastructures scale at a rapid
 rate, it has now become possible to deploy large ad-hoc networks that
-communicate in a limited fashion without a centralized control, and
-carry out useful tasks (such as surveillance and threat detection)
-even with limited coordination and control.  This naturally leads us
-to the consideration of {\em distributed} algorithms that use little
-or no central control.
+have the potential to carry out important tasks such as surveillance,
+environment monitoring, and threat detection.  In order to realize
+this potential, however, we need to design ad hoc network protocols in
+which nodes communicate without a centralized control and implement
+complex functions with limited coordination and control.  This
+naturally leads us to the consideration of {\em distributed}
+algorithms that use little or no central control.
 
 The lack of control is further exacerbated by the lack of complete
 information about the environment in which the agents are located,
@@ -73,7 +75,7 @@ that {\em adaptively reveals the input over time}.
 
 \begin{figure}
 \centering
-\includegraphics[width=4in]{dimensions-rev.ps}
+\includegraphics[width=4in]{dimensions-rev.pdf}
 \caption{Our framework for Distributed Online Optimization}
 \label{fig:dimensions}
 \end{figure}
@@ -150,12 +152,14 @@ environments.  {\em We propose to build new distributed methods for
   universal approximations}.
 \end{itemize}
 
-\BfPara{Information Flow}
-Information flow concerns the development of decentralized algorithms
-that route higher-level application information over networks.  Within
-information flow, we will study distributed algorithms for
-constructing and maintaining routing tables, and gossip-based
-information dissemination in highly dynamic networks.
+\BfPara{Information Flow} Our proposed work on decentralized network
+design will guarantee that the nodes can maintain a well-connected
+overlay structure useful for exchanging critical information among the
+nodes.  Information flow concerns the development of decentralized
+algorithms that route higher-level application information over
+networks.  Within information flow, we will study distributed
+algorithms for constructing and maintaining routing tables, and
+gossip-based information spreading in highly dynamic networks.
 
 \begin{itemize}
 \item
@@ -179,7 +183,7 @@ links that must be conserved for data transport. {\em We propose to
   flows that also obey degree bounds.}
 
 \item
-{\bf Information dissemination in adversarially dynamic networks} The
+{\bf Information spreading in adversarially dynamic networks} The
 dynamics of networks arising in military and critical infrastructure
 settings are not only extensive, but can also be influenced by
 external adversaries.  A natural model is that of an adversarial {\em

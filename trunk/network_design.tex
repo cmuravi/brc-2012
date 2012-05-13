@@ -1,11 +1,28 @@
 \subsection{Network Design}
+Our research in network design will concern distributed online
+algorithms for the general survivable network design problem under
+certain stochastic and adversarial scenarios (Section~\ref{sec:sndp}),
+and explore more robust solutions for several variants of aggregation
+tree problems that often arise in network applications
+(Sections~\ref{sec:aggregation} and~\ref{sec:ust}).
+
 \subsubsection{Survivable Network Design}
-Since the SNDP is NP-hard (it contains the Steiner tree problem as a special case), it has been widely studied from the viewpoint of approximation algorithms (See e.g.,~\cite{GK11} for a survey of results). These problems were
-one of the earliest applications of the primal-dual method in this area
-which led, over a sequence of papers, to the development of an $O(\log
-r_{\max})$-approximation algorithm~\cite{GGPSTW94}.  Subsequently, one of the first uses of iterative rounding in approximation algorithms
-led to a $2$-approximation for this problem (and for the general problem
-of network design with weakly-supermodular functions)~\cite{Jain01}.
+\label{sec:sndp}
+Recall that in the {\em survivable network design problem (SNDP)}, we
+are given a graph $G = (V,E)$ with edge-costs, and edge-connectivity
+requirements $r_{ij} \in Z_{\ge 0}$ for every pair of vertices $i, j
+\in V$, and need to find an (approximately) minimum-cost network that
+provides the required connectivity.  Since SNDP is NP-hard (it
+contains the Steiner tree problem as a special case), it has been
+widely studied from the viewpoint of approximation algorithms (See
+e.g.,~\cite{GK11} for a survey of results). These problems were one of
+the earliest applications of the primal-dual method in this area which
+led, over a sequence of papers, to the development of an $O(\log
+r_{\max})$-approximation algorithm~\cite{GGPSTW94}.  Subsequently, one
+of the first uses of iterative rounding in approximation algorithms
+led to a $2$-approximation for this problem (and for the general
+problem of network design with weakly-supermodular
+functions)~\cite{Jain01}.
 
 In~\cite{gkr10}, we studied these problems in the
 \emph{online} setting: we are given a graph with edge-costs, and an
@@ -26,15 +43,21 @@ a lower bound of $\Omega(\min\{|D|, \log n\})$ on the competitive ratio for this
 algorithm. This is in contrast to the case of online $1$-connectivity (i.e., online Steiner forest) where the best online algorithm is $\Theta(\log |D|)$-competitive \cite{BCsteiner97}.
 Our main result for the edge-connected survivable network design problem is an $O(r_{\max} \log^3 n)$-competitive randomized online algorithm against oblivious adversaries.
 
-Our algorithms use the standard embeddings of graphs into random subtrees (i.e., into \emph{singly    connected} subgraphs) as an intermediate step to get algorithms for higher connectivity. As a consequence of using these random embeddings, our algorithms are competitive only against oblivious adversaries. A natural extension that is still open is whether out methods can be extended to work against adaptive adversaries.
-
-Furthermore, our algorithms relying on tree embeddings and inherently centralized.  
-We propose to study decentralized algorithms for survivable network design in an online
+Our algorithms use the standard embeddings of graphs into random
+subtrees (i.e., into \emph{singly connected} subgraphs) as an
+intermediate step to get algorithms for higher connectivity. As a
+consequence of using these random embeddings, our algorithms are
+competitive only against oblivious adversaries. A natural extension
+that is still open is whether our methods can be extended to work
+against adaptive adversaries.  Furthermore, our algorithms relying on
+tree embeddings and inherently centralized.  We propose to study
+decentralized algorithms for survivable network design in an online
 setting where the underlying graph and costs are static while the
-connectivity requirements change online. 
+connectivity requirements change online.
 
+\junk{ %%% The following seems to be a repeat of the above
 Finally, our algorithms are all centralized, and it is unclear how to extend even the one-connected online algorithms for Steiner trees to the distributed setting.
-
+}
 \Research{
 \label{prob:sndp}
 Devise distributed online algorithms for the Survivable Network Design Problem with good competitive ratios against adaptive adversaries.}
@@ -54,6 +77,7 @@ In that work, we assumed for simplicity that all pairs have the the same
 connectivity requirement of $k$. A simple generalization would allow each arriving pair to specify even the connectivity to be any value in $\{0,1\ldots,k\}$ according to a pre-defined probability distribution -- we'll now have values $p_{ij}(\kappa)$ for $\kappa \in \{0,1\ldots,k\}$, summing to one. We propose to extend our previous work to this more interesting setting that allows for more general stochastic specifications of connectivity requirements.
 
 \subsubsection{Aggregation trees}
+\label{sec:aggregation}
 Consider the problem of building an aggregation tree for tracking
 targets.  In a stochastic model of uncertainty, we may view each
 target as an object that is detected by one of the various agents
@@ -135,7 +159,8 @@ k-MST. Also related to garg-gupta-leonardi-sankowsi (SODA 08) which
 relates to Univ TSP.
 \fi
 
-\subsubsection{Universal approximations for Steiner trees}
+\subsubsection{Universal approximations for Steiner tree and related problems}
+\label{sec:ust}
 We also plan to study aggregation trees under an adversarial model of
 uncertainty.  We have introduced the framework of {\em universal
   approximations}\/ that provides a robust notion of quality with
