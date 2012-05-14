@@ -50,17 +50,33 @@ consequence of using these random embeddings, our algorithms are
 competitive only against oblivious adversaries. A natural extension
 that is still open is whether our methods can be extended to work
 against adaptive adversaries.  Furthermore, our algorithms relying on
-tree embeddings and inherently centralized.  We propose to study
-decentralized algorithms for survivable network design in an online
-setting where the underlying graph and costs are static while the
-connectivity requirements change online.
+tree embeddings and inherently centralized, and it is unclear how to
+extend even the one-connected online algorithms for Steiner trees to
+the distributed setting.
+
+\Research{
+\label{prob:sndp}
+Devise distributed online algorithms for the Survivable Network Design
+Problem with good competitive ratios against adaptive adversaries.}
+
+We propose to study decentralized algorithms for survivable network
+design in an online setting where the underlying graph and costs are
+static while the connectivity requirements change online.  To design
+decentralized algorithms, we will consider two sets of techniques, one
+used for global structures such as minimum spanning
+trees~\cite{gallager+hs:mst,garay+kp:mst}, and the other for local
+structures such as minimum dominating sets~\cite{jia+rs:dominateFull}.
+We believe that a combination of these techniques will be helpful in
+tackling several special cases of SNDP where the connectivity
+requirements satisfy some locality constraints.  We also plan to
+quantify the price of decentralization of SNDP, which will help
+determine what network design problems can be effectively solved using
+decentralizated algorithms, and which others may even be infeasible to
+solve in a decentralized manner.
 
 \junk{ %%% The following seems to be a repeat of the above
 Finally, our algorithms are all centralized, and it is unclear how to extend even the one-connected online algorithms for Steiner trees to the distributed setting.
 }
-\Research{
-\label{prob:sndp}
-Devise distributed online algorithms for the Survivable Network Design Problem with good competitive ratios against adaptive adversaries.}
 
 Another direction to extend the SNDP is the
 stochastic case when the instance is drawn according to a probability
@@ -121,12 +137,14 @@ all targets say. Fifth, the notion of stochastic uncertainty can be
 replaced by the requirement that the method is robust towards the
 worst of many possible scenarios of target materialization. We
 investigate one particularly strong notion of robustness for this
-problem in the next subsection.
+problem in Section~\ref{sec:ust}.
 
 \Research{
 \label{prob:tmrst}
-Devise offline approximation algorithms for the Target Maximizing Rooted
-Steiner Tree problem with good constant performance ratio. Extend the techniques to the various generalizations and to the robust and distributed settings.}
+Devise offline approximation algorithms for the Target Maximizing
+Rooted Steiner Tree problem with good constant performance
+ratio. Extend the techniques to the various generalizations and to the
+robust and distributed settings.}
 
 As stated, the problem is closely related to the $k$-MST problem that
 PIs Ravi and Sundaram introduced in an early paper~\cite{RSMRR94}, and
@@ -146,8 +164,16 @@ problem~\cite{GKNR12} but the stochasticity is related to delays at
 the nodes to fetch the rewards rather than the location of targets on
 the visited nodes. These are all interesting approaches that we
 propose to investigate to solve the target maximizing problems we
-propose. Extending these centralized methods to work in a distributed
-setting is also a challenging direction we hope to pursue.
+propose. 
+
+Two other challenging directions that we will pursue are to extend
+these centralized methods to work in a distributed setting, and to
+bound the price of decentralization for the general problem.  For the
+former, we expect that it will be important to have the nodes exchange
+appropriate information about the target probability distributions to
+one another; in this regard, our proposed local methods for
+disseminating information (Section~\ref{sec:spreading}) may be
+helpful.
 
 \iffalse
 RELATED WORK: karger-minkoff maybecast tree, gupta-nagarajan-ravi
@@ -233,5 +259,9 @@ far are centralized.  We propose to develop distributed algorithms for
 constructing sparse partition hierarchies.  In an earlier work on
 aggregation trees for sensor network applications, we showed that this
 is achievable for the highly specialized case of grid
-graphs~\cite{jia+nrs:gist}.
+graphs~\cite{jia+nrs:gist}, thus ensuring a small price of
+decentralization for the universal Steiner tree problem on grid-like
+graphs.  For general graphs, we plan to build on these ideas and the
+techniques developed in~\cite{peleg:distributeBook} for dstributed construction
+of related network decompositions.
 
