@@ -2,17 +2,11 @@
 
 latexfile = proposal
 
-$(latexfile).pdf: $(latexfile).dvi
-		dvips $(latexfile)
-		ps2pdf13 $(latexfile).ps
-
-
-$(latexfile).dvi: $(latexfile).tex approach.tex timeline.tex intro.tex # $(latexfile).bib  stealcycles.tex dns.tex webcloud.tex
-		latex $(latexfile)
-		latex $(latexfile)
+$(latexfile).pdf: 
+		pdflatex $(latexfile)
 		bibtex $(latexfile)
-		latex $(latexfile)
-		latex $(latexfile)
+		pdflatex $(latexfile)
+		pdflatex $(latexfile)
 
 clean: 
 		/bin/rm -f *.lof
