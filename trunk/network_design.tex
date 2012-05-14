@@ -108,7 +108,7 @@ at any one of the nodes) will be covered. At the other end, if no
 backbone or tree edges can be built a priori, the root can only detect
 targets that materialize in its vicinity. We thus have a trade-off
 between the allowed size of the Steiner tree and its expected target
-coverage that we propose to study in detail.
+coverage and this is what we propose to study in detail.
 
 We call this problem the \noindent{\bf \em Target Maximizing Rooted
 Steiner Tree} problem.  We are given an undirected graph $G =
@@ -227,7 +227,7 @@ solutions in some cases.  For any metric space, there exist Steiner
 trees that have universal poylogarithmic approximation ratios: our
 prior results~\cite{jia+lnrs:universal}, and the improved results of
 $O(\log^2 n)$~\cite{gupta+hr:oblivious} that introduce the notion of
-oblivious network design.  Though these results reveal new onsights to
+oblivious network design.  Though these results reveal new insights to
 the structural properties of Steiner trees and metrics, a major
 drawback is that {\em they do not apply to arbitrary graphs}.
 
@@ -235,7 +235,7 @@ In very recent work, we have made some progress on this
 front~\cite{busch+drrs:ust}, and have identified a promising approach
 to attack the problem.  One of the major challenges in constructing a
 universal Steiner tree is that any tree will be forced to place some
-vertices far apart in tree, even though they may be ``nearby''
+vertices far apart (in the tree), even though they may be ``nearby''
 according to the underlying graph distances.  As a result, the
 resulting spanning tree may perform poorly on a subset that includes
 this set and some other carefully chosen vertices.  To address this
