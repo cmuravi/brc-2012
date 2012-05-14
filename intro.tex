@@ -83,17 +83,25 @@ that {\em adaptively reveals the input over time}.
 Different problems have different characteristics when investigated in
 the context of these different categories, and we hope to develop
 techniques that apply to several variants of fundamental network
-optimization problems.  In some fortunate circumstances, we can find
-solution concepts that can handle multiple dimensions simultaneously
-as with the (meta-)phenomenon of {\em universality}
-\cite{jia+lnrs:universal}: for certain problems of central
-significance such as TSP, Steiner Tree and Set Cover, produces
-guaranteed solutions (albeit,centralized) in the face of adversarial
-revelation of the input.  Indeed, universal algorithms do not even
-exploit the adaptivity available to them and operate obliviously.  One
-of the hopes of this proposal is to extend the phenomenon of
-universality to the distributed setting in addition to uncovering
-other similar (meta-)phenomena.
+optimization problems.  One of the performance measures we will adopt
+for analyzing our algorithms is the standard {\em competitive ratio},
+which is the ratio of the cost of the online solution to that of an
+optimal offline solution for the worst-case
+instance~\cite{be98,sleator+t:cache}.  In addition, for certain
+network optimization problems, we will also quantify the {\em price of
+  decentralization}, which we define as the worst-case ratio of the
+cost of the solution achieved by any distributed algorithm that does
+not perform global communication to that of an optimal centralized
+solution.  In some fortunate circumstances, we can find solution
+concepts that can handle multiple dimensions simultaneously as with
+the (meta-)phenomenon of {\em universality} \cite{jia+lnrs:universal}:
+for certain problems of central significance such as TSP, Steiner Tree
+and Set Cover, produces guaranteed solutions (albeit, centralized) in
+the face of adversarial revelation of the input.  Indeed, universal
+algorithms do not even exploit the adaptivity available to them and
+operate obliviously.  One of the hopes of this proposal is to extend
+the phenomenon of universality to the distributed setting in addition
+to uncovering other similar (meta-)phenomena.
 
 At a high level, the problems we plan to study in this project can be
 divided into two categories: {\bf \em network design}\/ and {\bf \em
